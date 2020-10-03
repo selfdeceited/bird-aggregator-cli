@@ -16,16 +16,8 @@ func Dispatch(pages int, callOptions flickr.CallOptions) []flickr.CallResult {
 
 	for i := 0; i < pages; i++ {
 		v := <-c
-		printResult(v)
 		results = append(results, v)
 	}
 
 	return results
-}
-
-func printResult(result flickr.CallResult) {
-	/*fmt.Println("\n\n\n")
-	for i := 0; i < len(result.PhotoNames); i++ {
-		fmt.Println(result.PhotoNames[i])
-	}*/
 }
