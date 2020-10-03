@@ -1,9 +1,12 @@
-= Description
+= Description 🦆
+Simple cli interface accessing Flickr API to get birds statistics.
 
-== Example
+== Motivation 🦚
+Wanted to check out some Go and be able to check stats while website is still under construction
 
-call.sh
+== Example 🦜
+
 [source, bash]
 ----
-go ./get_data.go --api-key 123
+go run ./main.go -api_key=123 -user_id=some_user
 ----
