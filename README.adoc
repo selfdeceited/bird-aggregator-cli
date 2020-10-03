@@ -1,0 +1,9 @@
+= Description
+
+== Example
+
+call.sh
+[source, bash]
+----
+go ./get_data.go --api-key 123
+----
