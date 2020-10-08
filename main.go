@@ -11,7 +11,7 @@ import (
 func main() {
 	apiKey := flag.String("api_key", "0bc2f0f2743df78c0764103b16222110",
 		"public api key required to access Flickr API. Default is mine")
-	userID := flag.String("user_id", "106265895",
+	userID := flag.String("user_id", "106265895@N05",
 		"public Flickr user ID who post the photos. Default is mine")
 	flag.Parse()
 
