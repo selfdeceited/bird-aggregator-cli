@@ -3,11 +3,10 @@ package flickr
 import (
 	"strings"
 
-	models "github.com/selfdeceited/bird-aggregator-cli/models"
 	operators "github.com/selfdeceited/bird-aggregator-cli/operators"
 )
 
-func Map(vs []models.Photo, f func(models.Photo) string) []string {
+func Map(vs []Photo, f func(Photo) string) []string {
 	vsm := make([]string, len(vs))
 	for i, v := range vs {
 		vsm[i] = f(v)
@@ -15,8 +14,8 @@ func Map(vs []models.Photo, f func(models.Photo) string) []string {
 	return vsm
 }
 
-func GetPhotoNames(res models.PhotosResponse) []string {
-	return operators.Filter(Map(res.Photos.Photo, func(v models.Photo) string {
+func GetPhotoNames(res PhotosResponse) []string {
+	return operators.Filter(Map(res.Photos.Photo, func(v Photo) string {
 		return v.Title
 	}), func(title string) bool {
 		return strings.HasPrefix(title, "B: ")
@@ -24,11 +23,9 @@ func GetPhotoNames(res models.PhotosResponse) []string {
 }
 
 func FlatMapNames(res []CallResult) []string {
-	vsm := []string{}
+	flatNames := []string{}
 	for _, v := range res {
-		for _, name := range v.PhotoNames {
-			vsm = append(vsm, name)
-		}
+		flatNames = append(flatNames, v.PhotoNames...)
 	}
-	return vsm
+	return flatNames
 }

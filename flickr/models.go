@@ -1,6 +1,5 @@
-package models
+package flickr
 
-// Photo u know
 type Photo struct {
 	ID       string `json:"id"`
 	Owner    string `json:"owner"`
@@ -13,7 +12,6 @@ type Photo struct {
 	Isfamily int    `json:"isfamily"`
 }
 
-// PhotosResponse u know
 type PhotosResponse struct {
 	Photos struct {
 		Page    int     `json:"page"`
@@ -23,4 +21,15 @@ type PhotosResponse struct {
 		Photo   []Photo `json:"photo"`
 	} `json:"photos"`
 	Stat string `json:"stat"`
+}
+
+type CallOptions struct {
+	APIKey  string
+	UserID  string
+	PerPage int
+}
+
+type CallResult struct {
+	PagesCount int
+	PhotoNames []string
 }
