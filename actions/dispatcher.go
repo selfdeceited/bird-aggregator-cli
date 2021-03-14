@@ -1,6 +1,6 @@
 package actions
 
-import flickr "../flickr"
+import flickr "github.com/selfdeceited/bird-aggregator-cli/flickr"
 
 func askForPhotos(pageNumber int, callOptions flickr.CallOptions, c chan flickr.CallResult) {
 	var result = flickr.Call("flickr.people.getPhotos", callOptions, pageNumber)

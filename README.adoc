@@ -8,5 +8,17 @@ Wanted to check out some Go and be able to check stats while website is still un
 
 [source, bash]
 ----
-go run ./main.go -api_key=123 -user_id=some_user
+go run ./main.go fetch --help
+
+# ok, like that
+go run main.go fetch -k $YOUR_API_KEY -u YOUR_USER_ID
+
+# .. or like that, if you specify .cobra at root and put variables
+go run main.go fetch --config ./.example.config.yaml
+----
+
+[source, yaml]
+----
+apiKey: YOUR_API_KEY
+userId: YOUR_USER_ID
 ----

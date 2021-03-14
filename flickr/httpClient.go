@@ -6,23 +6,20 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	models "../models"
+	models "github.com/selfdeceited/bird-aggregator-cli/models"
 )
 
-//CallOptions - required
 type CallOptions struct {
 	APIKey  string
 	UserID  string
 	PerPage int
 }
 
-//CallResult - required
 type CallResult struct {
 	PagesCount int
 	PhotoNames []string
 }
 
-//Call - used to call Flickr API
 func Call(method string, options CallOptions, pageNumber int) CallResult {
 	var url = "https://api.flickr.com/services/rest"
 
@@ -31,16 +28,25 @@ func Call(method string, options CallOptions, pageNumber int) CallResult {
 		url, method, options.APIKey, options.PerPage, options.UserID, pageNumber)
 
 	req, err := http.NewRequest("GET", finalURL, nil)
+	if err != nil {
+		fmt.Print(err.Error())
+		return CallResult{}
+	}
+
 	req.Header.Add("Cache-Control", "no-cache")
 	resp, err := client.Do(req)
 
 	if err != nil {
-		fmt.Printf(err.Error())
+		fmt.Print(err.Error())
 		return CallResult{}
 	}
 
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Print(err.Error())
+		return CallResult{}
+	}
 
 	res := models.PhotosResponse{}
 	json.Unmarshal([]byte(body), &res)

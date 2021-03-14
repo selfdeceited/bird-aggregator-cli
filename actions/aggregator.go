@@ -3,8 +3,8 @@ package actions
 import (
 	"strings"
 
-	flickr "../flickr"
-	operators "../operators"
+	flickr "github.com/selfdeceited/bird-aggregator-cli/flickr"
+	operators "github.com/selfdeceited/bird-aggregator-cli/operators"
 )
 
 func GetBirdNames(callResults []flickr.CallResult) []string {

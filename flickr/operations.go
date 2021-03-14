@@ -3,8 +3,8 @@ package flickr
 import (
 	"strings"
 
-	models "../models"
-	operators "../operators"
+	models "github.com/selfdeceited/bird-aggregator-cli/models"
+	operators "github.com/selfdeceited/bird-aggregator-cli/operators"
 )
 
 func Map(vs []models.Photo, f func(models.Photo) string) []string {
