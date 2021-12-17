@@ -21,4 +21,4 @@ jobs:
       run: go build -v ./...
 
     - name: Launch
-      run: go run main.go fetch -k $API_KEY -u $YOUR_USER_ID
+      run: go run main.go fetch -k $API_KEY -u $USER_ID
