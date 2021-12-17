@@ -1,0 +1,24 @@
+name: Go
+
+on:
+  workflow_dispatch:
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.API_KEY }}
+      USER_ID: ${{ secrets.USER_ID }}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Launch
+      run: go run main.go fetch -k $API_KEY -u $YOUR_USER_ID
